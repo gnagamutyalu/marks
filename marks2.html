@@ -1,0 +1,129 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:pink;
+            text-align: center;
+         }
+        .container {
+            background-color: rgb(252, 209, 232);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+             max-width: 600px;
+            margin: auto;
+        }
+        input, button {
+             padding:10px;
+            font-size: 16px;
+        }
+        .button{
+            display: inline-block;
+            margin:5px;
+        }
+        .team-info {
+            margin-bottom: 20px;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container"  >
+        <div class="team-info">
+            <label for="teamNumber" style="font-weight: bolder; font-size: 20px;">Team Number:</label>
+            <input type="number" id="teamNumber" value="1" min="1" style="width: 50px;">
+        </div>
+         <div class="team-info">
+            <label for="teamLeader" style="font-weight: bolder; font-size:20px;">Team Leader</label>
+            <input type="text" id="teamLeader" placeholder="Enter team leader name" class="textf">
+        </div><div>
+        <label for="marks" style="font-weight: bolder; font-size:20px;">Marks:</label>
+        <input type="number" id="marks" value="0"   class="textf">
+    </div>
+
+    <div class="but">
+        <button onclick="incrementMarks()" class="button" id="but1">+30</button>
+        <button onclick="IncreMarks()" class="button" id="but2">+10</button>
+        <button onclick="decrementMarks()" class="button" id="but3">-10</button>
+        <button onclick="resetMarks()" class="button" id="but4">Reset</button>
+
+    </div>
+
+    <p id="result"></p>
+</div>
+ 
+<script>
+    let marks = 0;
+    let currentSet = "set 2"; // Default set
+
+    // Function to set the current set (called when you click set buttons)
+    function setCurrentSet(setIdentifier) {
+        currentSet = setIdentifier;
+        loadSetData(); // Load data for the new set
+    }
+
+    function incrementMarks() {
+        marks += 30;
+        updateMarks();
+    }
+
+    function IncreMarks() {
+        marks += 10;
+        updateMarks();
+    }
+
+    function decrementMarks() {
+        if (marks > 0) {
+            marks -= 10;
+        }
+        updateMarks();
+    }
+
+    function resetMarks() {
+        marks = 0;
+        document.getElementById('teamLeader').value = "";
+        document.getElementById('teamNumber').value = 1;
+        updateMarks();
+    }
+
+    function updateMarks() {
+        document.getElementById('marks').value = marks;
+        const teamNumber = document.getElementById('teamNumber').value;
+        const teamLeader = document.getElementById('teamLeader').value;
+        document.getElementById('result').innerText = `Team Number : ${teamNumber} \n Team Leader: ${teamLeader} \n Current Marks: ${marks}`;
+
+        // Use dynamically generated keys
+        localStorage.setItem(`${currentSet}_teamLeader`, teamLeader);
+        localStorage.setItem(`${currentSet}_marks`, marks);
+        localStorage.setItem(`${currentSet}_teamNumber`, teamNumber);
+    }
+
+    function loadSetData() {
+        // Load data for the current set
+        const storedTeamLeader = localStorage.getItem(`${currentSet}_teamLeader`);
+        const storedMarks = localStorage.getItem(`${currentSet}_marks`);
+        const storedTeamNumber = localStorage.getItem(`${currentSet}_teamNumber`);
+
+        if (storedTeamLeader) {
+            document.getElementById('teamLeader').value = storedTeamLeader;
+        }
+        if (storedMarks) {
+            marks = parseInt(storedMarks);
+        }
+        if (storedTeamNumber) {
+            document.getElementById('teamNumber').value = storedTeamNumber;
+        }
+
+        updateMarks();
+    }
+
+    // Load data for the default set on page load
+    window.onload = loadSetData;
+
+    document.getElementById('teamNumber').addEventListener('input', updateMarks);
+</script>
+</body>
+</html>

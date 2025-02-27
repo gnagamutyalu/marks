@@ -1,0 +1,37 @@
+#but1{
+    background-color:rgb(205, 199, 199);
+    color:green;
+     font-weight: bolder;
+ border-top-right-radius: 15px;
+ border-bottom-left-radius: 15px;
+ border-bottom-right-radius: 3px;
+ border-top-left-radius: 3px;
+}
+#but2{
+    background-color:rgb(205, 199, 199);
+    color:rgb(66, 60, 237);
+    font-weight: bolder;
+    border-radius: 50px;
+    border-top-right-radius: 15px;
+ border-bottom-left-radius: 15px;
+ border-bottom-right-radius: 3px;
+ border-top-left-radius: 3px;
+}
+#but3{
+    background-color:rgb(205, 199, 199);
+    color:red;
+    font-weight: bolder;
+    border-top-right-radius: 15px;
+ border-bottom-left-radius: 15px;
+ border-bottom-right-radius: 3px;
+ border-top-left-radius: 3px;
+
+}
+.but{
+    margin-top: 15px;
+}
+.textf{
+    border-radius: 15px;
+     
+}
+ 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <!--<h1>SETS</h1>-->
+     <div class="hole"> 
+     <div class="container" >
+     <a href="marks1.html" target="_blank"> <b>set 1</b></a> 
+    </div>
+    <div class="container">
+      <a href="marks2.html" target="_blank"> <b>set 2</b></a> 
+      </div>
+     <div class="container">
+      <a href="marks3.html" target="_blank"> <b>set 3</b></a> 
+   </div>
+     <div class="container">
+      <a href="marks4.html" target="_blank"> <b>set 4</b></a> 
+   </div>
+     <div class="container">
+      <a href="marks5.html" target="_blank"> <b>set 5</b></a> 
+   </div>
+     <div class="container">
+      <a href="marks6.html" target="_blank"> <b>set 6</b></a> 
+
+      </div>
+     </div>
+     <script>
+        const container=document.getElementById("container");
+        const teamnumberdisplay=document.getElementById("teamnumber");
+        const scoreboard=document.getElementById("scoreboard");
+        for(let i=1;i<=10;i++){
+            const div=document.createElement("div");
+            div.className="tempdiv";
+            div.innerText="team ${i}";
+            div.dataset.teamnumber=i
+
+
+            div.addEventListener("click",()=>{
+                teamnumber.innerText=`selected team number:${div.dataset.teamnumber}`;
+                scoreboard.style.display="block";
+            })
+            container.appendChild(div);
+        }
+        
+     </script>
+             
+</body>
+</html>
